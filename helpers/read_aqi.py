@@ -2,6 +2,7 @@ import os
 import pandas as pd
 
 def read_aqi(DIRNAME):
+    print("Start importing files from", DIRNAME, sep=' ',end='\n')
     for root, dirs, files in os.walk(DIRNAME, topdown=False):
         input=pd.DataFrame()
         for name in files:
