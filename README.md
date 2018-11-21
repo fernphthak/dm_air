@@ -16,5 +16,5 @@ A=rd.read_aqi("./some_data")
 ```
 * To get every folders' names
 ```python3
-rd.get_dirname()
+rd.get_dirnames()
 ```
