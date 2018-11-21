@@ -1,7 +1,5 @@
-""" You have to import these before using this helpers
 import os
 import pandas as pd
-"""
 
 def read_aqi(DIRNAME):
     for root, dirs, files in os.walk(DIRNAME, topdown=False):
