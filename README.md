@@ -21,5 +21,9 @@ rd.get_dirnames()
 
 * To fix time format
 ```python3
-aqi_2014.loc[:,'UPDATETIME'] = rd.timetodt(aqi_2014.loc[:,'UPDATETIME'])
+def time_fix_loop(TABLE):
+    for i in range(len(TABLE)):
+        TABLE.loc[i,'UPDATETIME']=rd.timetodt( TABLE.loc[i, 'UPDATETIME'] )
+
+time_fix_loop("TABLENAME") eg. aqi_2014
 ```
