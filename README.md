@@ -21,18 +21,19 @@ rd.get_dirnames()
 
 * To fix time format
 ```python3
+from datetime import datetime,timedelta
 # fix time format
 def timetodt(TIME):
     try:
         try:
             return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 上午')
         except ValueError:
-            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 下午')
+            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 下午') + timedelta(hours=12)
     except ValueError:
         try:
             return datetime.strptime(TIME, '%d-%m月 -%y %I.%M.%S.%f000 上午')
         except ValueError:
-            return datetime.strptime(TIME, '%d-%m月 -%y %I.%M.%S.%f000 下午')
+            return datetime.strptime(TIME, '%d-%m月 -%y %I.%M.%S.%f000 下午') + timedelta(hours=12)
         # print(TIME,"is not a right format",sep=' ')
 
 def time_fix_loop(TABLE):
