@@ -24,13 +24,3 @@ def get_filenames(DIRNAME):
     for root, dirs, files in os.walk(".", topdown=False):
         for name in files:
             print(os.path.join(root, name))
-
-# fix time format
-def timetodt(TIME):
-    try:
-        try:
-            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 上午')
-        except ValueError:
-            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 下午')
-    except ValueError:
-        print(TIME,"is not a right format",sep=' ')
