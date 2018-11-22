@@ -27,3 +27,14 @@ def time_fix_loop(TABLE):
 
 time_fix_loop("TABLENAME") # eg. aqi_2014
 ```
+
+* Or you can print message during converting to prevent speculating that your computer is not running
+```python3
+def time_fix_loop(TABLE):
+    for i in range(len(TABLE)):
+        print("Coverting number",i,",",
+              len(TABLE)-i,"lefted",
+              sep=' ',end='...')
+        TABLE.loc[i,'UPDATETIME']=rd.timetodt( TABLE.loc[i, 'UPDATETIME'] )
+        print("Done")
+```
