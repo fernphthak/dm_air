@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from datetime import datetime
 
 # core operation
 def read_aqi(DIRNAME):
@@ -24,8 +25,9 @@ def get_filenames(DIRNAME):
         for name in files:
             print(os.path.join(root, name))
 
-
-""" Example:
-input=read_aqi("../EPA_ERDB_2015")
-print(input)
-"""
+# fix time format
+def timetodt(TIME):
+    try:
+        return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 上午')
+    except ValueError:
+    return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 下午')
