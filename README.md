@@ -21,9 +21,23 @@ rd.get_dirnames()
 
 * To fix time format
 ```python3
+# fix time format
+def timetodt(TIME):
+    try:
+        try:
+            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 上午')
+        except ValueError:
+            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 下午')
+    except ValueError:
+        try:
+            return datetime.strptime(TIME, '%d-%m月 -%y %I.%M.%S.%f000 上午')
+        except ValueError:
+            return datetime.strptime(TIME, '%d-%m月 -%y %I.%M.%S.%f000 下午')
+        # print(TIME,"is not a right format",sep=' ')
+
 def time_fix_loop(TABLE):
     for i in range(len(TABLE)):
-        TABLE.at[i,'UPDATETIME']=rd.timetodt( TABLE.at[i, 'UPDATETIME'] )
+        TABLE.at[i,'UPDATETIME']=timetodt( TABLE.at[i, 'UPDATETIME'] )
 
 time_fix_loop("TABLENAME") # eg. aqi_2014
 ```
@@ -34,7 +48,13 @@ time_fix_loop("TABLENAME") # eg. aqi_2014
 def time_fix_loop(TABLE):
     for i in range(len(TABLE)):
         print("Coverting number",i,sep=' ',end='...')
-        TABLE.at[i,'UPDATETIME']=rd.timetodt( TABLE.at[i, 'UPDATETIME'] )
+        TABLE.at[i,'UPDATETIME']=timetodt( TABLE.at[i, 'UPDATETIME'] )
         print("Done","(",len(TABLE)-i-1,"lefted",")",
              sep=' ')
+```
+
+* (experinmental) another way to convert time
+```python3
+def time_fix_loop_beta(TABLE):
+    TABLE['UPDATETIME'] = TABLE['UPDATETIME'].apply(lambda a: timetodt(a))
 ```

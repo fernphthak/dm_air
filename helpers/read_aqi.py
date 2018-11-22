@@ -1,6 +1,5 @@
 import os
 import pandas as pd
-from datetime import datetime
 
 # core operation
 def read_aqi(DIRNAME):
