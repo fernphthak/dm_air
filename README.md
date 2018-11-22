@@ -18,3 +18,8 @@ A=rd.read_aqi("./some_data")
 ```python3
 rd.get_dirnames()
 ```
+
+* To fix time format
+```python3
+aqi_2014.loc[:,'UPDATETIME'] = rd.timetodt(aqi_2014.loc[:,'UPDATETIME'])
+```
