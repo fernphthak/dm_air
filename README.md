@@ -25,5 +25,5 @@ def time_fix_loop(TABLE):
     for i in range(len(TABLE)):
         TABLE.loc[i,'UPDATETIME']=rd.timetodt( TABLE.loc[i, 'UPDATETIME'] )
 
-time_fix_loop("TABLENAME") eg. aqi_2014
+time_fix_loop("TABLENAME") # eg. aqi_2014
 ```
