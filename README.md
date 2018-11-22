@@ -23,17 +23,18 @@ rd.get_dirnames()
 ```python3
 def time_fix_loop(TABLE):
     for i in range(len(TABLE)):
-        TABLE.loc[i,'UPDATETIME']=rd.timetodt( TABLE.loc[i, 'UPDATETIME'] )
+        TABLE.at[i,'UPDATETIME']=rd.timetodt( TABLE.at[i, 'UPDATETIME'] )
 
 time_fix_loop("TABLENAME") # eg. aqi_2014
 ```
+<b> IMPORTANT: use `at` instead of `loc` or `iloc`. (`at` is 1000x faster than loc&iloc) </b>
 
 * Or you can print message during converting to prevent speculating that your computer is not running
 ```python3
 def time_fix_loop(TABLE):
     for i in range(len(TABLE)):
         print("Coverting number",i,sep=' ',end='...')
-        TABLE.loc[i,'UPDATETIME']=rd.timetodt( TABLE.loc[i, 'UPDATETIME'] )
+        TABLE.at[i,'UPDATETIME']=rd.timetodt( TABLE.at[i, 'UPDATETIME'] )
         print("Done","(",len(TABLE)-i-1,"lefted",")",
              sep=' ')
 ```
