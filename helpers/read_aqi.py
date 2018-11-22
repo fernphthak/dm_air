@@ -28,9 +28,9 @@ def get_filenames(DIRNAME):
 # fix time format
 def timetodt(TIME):
     try:
-        return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 上午')
-    except ValueError:
         try:
-            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 下午')
+            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 上午')
         except ValueError:
-            print(TIME,"is not a right format",sep=' ')
+            return datetime.strptime(TIME, '%d-%m月-%y %I.%M.%S.%f000 下午')
+    except ValueError:
+        print(TIME,"is not a right format",sep=' ')
