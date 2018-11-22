@@ -32,9 +32,8 @@ time_fix_loop("TABLENAME") # eg. aqi_2014
 ```python3
 def time_fix_loop(TABLE):
     for i in range(len(TABLE)):
-        print("Coverting number",i,",",
-              len(TABLE)-i,"lefted",
-              sep=' ',end='...')
+        print("Coverting number",i,sep=' ',end='...')
         TABLE.loc[i,'UPDATETIME']=rd.timetodt( TABLE.loc[i, 'UPDATETIME'] )
-        print("Done")
+        print("Done","(",len(TABLE)-i-1,"lefted",")",
+             sep=' ')
 ```
