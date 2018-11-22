@@ -36,25 +36,7 @@ def timetodt(TIME):
         # print(TIME,"is not a right format",sep=' ')
 
 def time_fix_loop(TABLE):
-    for i in range(len(TABLE)):
-        TABLE.at[i,'UPDATETIME']=timetodt( TABLE.at[i, 'UPDATETIME'] )
+    TABLE['UPDATETIME'] = TABLE['UPDATETIME'].apply(lambda a: timetodt(a))
 
 time_fix_loop("TABLENAME") # eg. aqi_2014
-```
-<b> IMPORTANT: use `at` instead of `loc` or `iloc`. (`at` is 1000x faster than loc&iloc) </b>
-
-* Or you can print message during converting to prevent speculating that your computer is not running
-```python3
-def time_fix_loop(TABLE):
-    for i in range(len(TABLE)):
-        print("Coverting number",i,sep=' ',end='...')
-        TABLE.at[i,'UPDATETIME']=timetodt( TABLE.at[i, 'UPDATETIME'] )
-        print("Done","(",len(TABLE)-i-1,"lefted",")",
-             sep=' ')
-```
-
-* (experinmental) another way to convert time
-```python3
-def time_fix_loop_beta(TABLE):
-    TABLE['UPDATETIME'] = TABLE['UPDATETIME'].apply(lambda a: timetodt(a))
 ```
