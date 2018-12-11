@@ -1,8 +1,5 @@
-aqi_tw_2013.pkl
-aqi_tw_2014.pkl
-aqi_tw_2015.pkl
-aqi_tw_2016.pkl
-aqi_tw_2017.pkl
+aqi_tw_*.pkl
+dataset-metadata
 
 # Created by https://www.gitignore.io/api/macos,python
 # Edit at https://www.gitignore.io/?templates=macos,python
