@@ -20,6 +20,6 @@ def get_dirnames():
 
 # print all filenames in the given folder
 def get_filenames(DIRNAME):
-    for root, dirs, files in os.walk(".", topdown=False):
+    for root, dirs, files in os.walk(DIRNAME, topdown=False):
         for name in files:
             print(os.path.join(root, name))
