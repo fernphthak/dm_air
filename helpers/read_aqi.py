@@ -10,7 +10,7 @@ def read_aqi(DIRNAME):
             output=pd.concat([output,pd.read_csv(os.path.join(root, name),encoding='big5')])
             print("Reading",os.path.join(root, name),sep= ' ',end='\n')
     print("Done importing files from", DIRNAME, sep=' ',end='\n')
-    return output.reset_index()
+    return output.reset_index().drop(columns=['index'])
 
 # print all folder names in the current directory
 def get_dirnames():
