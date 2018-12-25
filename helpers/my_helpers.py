@@ -4,4 +4,4 @@ def check_missing_values(row):
     for element in row:
         if element == True:
             counter+=1
-    return ("The amoung of missing records is: ", counter)
+    return ("The amount of missing records is: ", counter)
